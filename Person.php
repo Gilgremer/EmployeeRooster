@@ -1,25 +1,41 @@
 <?php
 
-require_once 'Employee.php';
+class Person {
+    private $name;
+    private $address;
+    private $age;
 
-class HourlyEmployee extends Employee {
-    private $hoursWorked;
-    private $rate;
-
-    public function __construct($name, $address, $age, $companyName, $hoursWorked, $rate) {
-        parent::__construct($name, $address, $age, $companyName);
-        $this->hoursWorked = $hoursWorked;
-        $this->rate = $rate;
+    public function __construct($name, $address, $age) {
+        $this->name = $name;
+        $this->address = $address;
+        $this->age = $age;
     }
 
-    public function earnings() {
-        if ($this->hoursWorked > 40) {
-            return 40 * $this->rate + ($this->hoursWorked - 40) * $this->rate * 1.5;
-        }
-        return $this->hoursWorked * $this->rate;
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function setAddress($address) {
+        $this->address = $address;
+    }
+
+    public function getAge() {
+        return $this->age;
+    }
+
+    public function setAge($age) {
+        $this->age = $age;
     }
 
     public function __toString() {
-        return parent::__toString() . ", Hours Worked: $this->hoursWorked, Rate: $this->rate";
+        return "Name: $this->name, Address: $this->address, Age: $this->age";
     }
 }
